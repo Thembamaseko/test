@@ -1,0 +1,60 @@
+{% extends 'basement.html'%}
+
+{% block content %}
+
+    <!-- Inline SVG icon sprite (hidden, referenced via <use>) -->
+    {% include 'zwipi-icons.svg' %}
+
+    <div class="app">
+
+        <!-- Top header, Twitter-style -->
+        <header class="header">
+            <div class="logo">
+                <p id="logo">zwipi<span>Online</span></p>
+            </div>
+        </header>
+
+        <div class="auth">
+
+            <h1 class="auth-title">Password Resert</h1>
+            <p class="auth-subtitle">Resert Password and start spinning</p>
+
+            <form method="POST" class="auth-form">
+                {{ form.hidden_tag() }}
+                <!-- Password -->
+                <div class="field-group">
+                    <label for="{{ form.password.id }}">
+                        <svg class="field-icon"><use href="#icon-password"></use></svg>
+                        {{ form.password.label.text }}
+                    </label>
+                    {{ form.password(class="field-input", placeholder="At least 8 characters") }}
+                    {% for error in form.password.errors %}
+                        <span class="field-error">{{ error }}</span>
+                    {% endfor %}
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="field-group">
+                    <label for="{{ form.confirm_password.id }}">
+                        <svg class="field-icon"><use href="#icon-password"></use></svg>
+                        {{ form.confirm_password.label.text }}
+                    </label>
+                    {{ form.confirm_password(class="field-input", placeholder="Re-enter password") }}
+                    {% for error in form.confirm_password.errors %}
+                        <span class="field-error">{{ error }}</span>
+                    {% endfor %}
+                </div>
+
+                {{ form.submit(class="auth-btn") }}
+
+            </form>
+
+            <p class="auth-footer">
+                Already have an account? <a href="/login">Log in</a>
+            </p>
+
+        </div>
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,134 @@
+{% extends 'basement.html'%}
+
+{% block content %}
+
+    {% include 'zwipi-icons.svg' %}
+
+    <div class="app">
+
+        <header class="header">
+            <div class="logo">
+                <p id="logo">zwipi<span>Online</span></p>
+            </div>
+            <div class="user">
+                <span class="username">{{current_user.username}}</span>
+                <p class="balance-pill" id="scount">
+                    R {{current_user.coins}}
+                </p>
+            </div>
+        </header>
+
+        <!-- Flash message dialog -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <dialog id="flashDialog">
+            <div class="flash-dialog-inner">
+                <button class="flash-close-btn" onclick="document.getElementById('flashDialog').close()">&#x2715;</button>
+                {% for category, message in messages %}
+                <div class="flash-{{ category }}">
+                    <strong>{{ category|title }}</strong>
+                    <p>{{ message }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </dialog>
+        <script>
+            const flashDialog = document.getElementById('flashDialog');
+            flashDialog.showModal();
+            setTimeout(() => flashDialog.close(), 5000);
+            flashDialog.addEventListener('click', e => {
+                if (e.target === flashDialog) flashDialog.close();
+            });
+        </script>
+        {% endif %}
+        {% endwith %}
+
+        <div class="game">
+
+            <div class="recent-card">
+                <p class="section-label">Recent Spins</p>
+                <ul id="recent-results" class="recent-list">
+                    {% for spin in recent_spins %}
+                    <li class="recent-item">
+                        {% if spin.result == "Heads" %}
+                            <img class="recent-img" src="../static/images/heads.png" alt="Heads">
+                        {% elif spin.result == "Tails" %}
+                            <img class="recent-img" src="../static/images/tails.png" alt="Tails">
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="result-card">
+                <div class="coin" id="coin">
+                    <div class="heads">
+                        <img src="../static/images/heads.png" alt="Heads">
+                    </div>
+                    <div class="tails">
+                        <img src="../static/images/tails.png" alt="Tails">
+                    </div>
+                </div>
+                <div class="timer" id="timer"></div>
+            </div>
+
+            <form method="post">
+                <div class="bets-card">
+                    <div class="card-header">
+                        <input type="text" id="current-spin-id" name="current-spin-id" readonly hidden>
+                    </div>
+                    <div class="card-body">
+                        <div class="choice-row">
+                            <button type="button" id="heads" class="choice-btn">
+                                <img src="../static/images/heads.png" class="choice-icon" alt="">
+                                Heads
+                            </button>
+                            <button type="button" id="tails" class="choice-btn">
+                                <img src="../static/images/tails.png" class="choice-icon" alt="">
+                                Tails
+                            </button>
+                        </div>
+                        <div class="amount-row">
+                            <button type="button" id="decrease" class="amount-btn">−</button>
+                            <input type="number" name="bet-amount" id="betamount" value="1">
+                            <button type="button" id="increase" class="amount-btn">+</button>
+                        </div>
+                        <input type="text" name="bet-choice" id="choice" readonly hidden>
+                        {{ form.submit(class="bet-btn") }}
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+        <nav class="bottom-nav">
+            <a href="/" class="nav-item">
+                <svg class="nav-icon"><use href="#icon-home"></use></svg>
+                <span>Home</span>
+            </a>
+            <a href="/profile" class="nav-item">
+                <svg class="nav-icon"><use href="#icon-profile"></use></svg>
+                <span>Profile</span>
+            </a>
+            <a href="/deposit" class="nav-item">
+                <svg class="nav-icon"><use href="#icon-deposit"></use></svg>
+                <span>Deposit</span>
+            </a>
+            <a href="/withdraw" class="nav-item">
+                <svg class="nav-icon"><use href="#icon-withdraw"></use></svg>
+                <span>Withdraw</span>
+            </a>
+            <a href="/logout" class="nav-item">
+                <svg class="nav-icon"><use href="#icon-logout"></use></svg>
+                <span>Logout</span>
+            </a>
+        </nav>
+
+    </div>
+
+    <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
+    <script src="../static/js/game2.js"></script>
+    <script src="../static/js/socket.js"></script>
+    <script src="../static/js/flash.js"></script>
+
+{% endblock %}

@@ -1,0 +1,150 @@
+{% extends 'basement.html'%}
+
+{% block content %}
+
+    <!-- Inline SVG icon sprite (hidden, referenced via <use>) -->
+    {% include 'zwipi-icons.svg' %}
+
+    <div class="app">
+
+        <!-- Top header, Twitter-style -->
+        <header class="header">
+            <div class="logo">
+                <p id="logo">zwipi<span>Online</span></p>
+            </div>
+        </header>
+
+        <div class="auth">
+
+            <h1 class="auth-title">Create your account</h1>
+            <p class="auth-subtitle">Join Zwipi and start spinning</p>
+
+            <form method="POST" class="auth-form">
+                {{ form.hidden_tag() }}
+
+                <!-- Username -->
+                <div class="field-group">
+                    <label for="{{ form.username.id }}">
+                        <svg class="field-icon"><use href="#icon-name"></use></svg>
+                        {{ form.username.label.text }}
+                    </label>
+                    {{ form.username(class="field-input", placeholder="Choose a username") }}
+                    {% for error in form.username.errors %}
+                        <span class="field-error">{{ error }}</span>
+                    {% endfor %}
+                </div>
+
+                <!-- Email -->
+                <div class="field-group">
+                    <label for="{{ form.email.id }}">
+                        <svg class="field-icon"><use href="#icon-email"></use></svg>
+                        {{ form.email.label.text }}
+                    </label>
+                    {{ form.email(class="field-input", placeholder="you@example.com") }}
+                    {% for error in form.email.errors %}
+                        <span class="field-error">{{ error }}</span>
+                    {% endfor %}
+                </div>
+
+                <!-- ID Number -->
+                <div class="field-group">
+                    <label for="{{ form.id_number.id }}">
+                        <svg class="field-icon"><use href="#icon-id"></use></svg>
+                        {{ form.id_number.label.text }}
+                    </label>
+                    {{ form.id_number(class="field-input", placeholder="13-digit ID number", inputmode="numeric") }}
+                    {% for error in form.id_number.errors %}
+                        <span class="field-error">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <!-- ID Number -->
+                <div class="field-group">
+                    <label for="{{ form.age.id }}">
+                        <svg class="field-icon"><use href="#icon-age"></use></svg>
+                        {{ form.age.label.text }}
+                    </label>
+                    {{ form.age(class="field-input", placeholder="How old are you", inputmode="numeric") }}
+                    {% for error in form.age.errors %}
+                        <span class="field-error">{{ error }}</span>
+                    {% endfor %}
+                </div>
+
+                <!-- Cellphone -->
+                <div class="field-group">
+                    <label for="{{ form.cellphone.id }}">
+                        <svg class="field-icon"><use href="#icon-cell"></use></svg>
+                        {{ form.cellphone.label.text }}
+                    </label>
+                    {{ form.cellphone(class="field-input", placeholder="0XXXXXXXXX", inputmode="tel") }}
+                    {% for error in form.cellphone.errors %}
+                        <span class="field-error">{{ error }}</span>
+                    {% endfor %}
+                </div>
+
+                <!-- Gender -->
+                <div class="field-group">
+                    <label>
+                        <svg class="field-icon"><use href="#icon-gender"></use></svg>
+                        {{ form.gender.label.text }}
+                    </label>
+                    <div class="radio-row">
+                        {% for subfield in form.gender %}
+                            <label class="radio-pill">
+                                {{ subfield() }}
+                                {{ subfield.label.text }}
+                            </label>
+                        {% endfor %}
+                    </div>
+                    {% for error in form.gender.errors %}
+                        <span class="field-error">{{ error }}</span>
+                    {% endfor %}
+                </div>
+
+                <!-- Password -->
+                <div class="field-group">
+                    <label for="{{ form.password.id }}">
+                        <svg class="field-icon"><use href="#icon-password"></use></svg>
+                        {{ form.password.label.text }}
+                    </label>
+                    {{ form.password(class="field-input", placeholder="At least 8 characters") }}
+                    {% for error in form.password.errors %}
+                        <span class="field-error">{{ error }}</span>
+                    {% endfor %}
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="field-group">
+                    <label for="{{ form.confirm_password.id }}">
+                        <svg class="field-icon"><use href="#icon-password"></use></svg>
+                        {{ form.confirm_password.label.text }}
+                    </label>
+                    {{ form.confirm_password(class="field-input", placeholder="Re-enter password") }}
+                    {% for error in form.confirm_password.errors %}
+                        <span class="field-error">{{ error }}</span>
+                    {% endfor %}
+                </div>
+
+                 {% with messages = get_flashed_messages(with_categories=true)%}
+    {% if messages %}
+    <div class="flash-container">
+        {% for category, message in messages %}
+            <div class="flash flash-{{category}}">{{message}}</div>
+        {% endfor %}
+    </div>
+
+        {% endif %}
+    {% endwith %}
+
+                {{ form.submit(class="auth-btn") }}
+
+            </form>
+
+            <p class="auth-footer">
+                Already have an account? <a href="/login">Log in</a>
+            </p>
+
+        </div>
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,95 @@
+
+
+{% extends 'basement.html'%}
+
+
+{% block content%}
+
+        {% include 'zwipi-icons.svg' %}
+         <header class="header">
+            <div class="logo">
+                <p id="logo">zwipi<span>Online</span></p>
+            </div>
+
+            <div class="user">
+                <span class="username">{{current_user.username}}</span>
+                <p class="balance-pill" id="scount">
+                    R {{current_user.coins}}
+                </p>
+            </div>
+        </header>
+        <div class="container">
+            <div class="card">
+                <div class="card-head">
+                    <h2>Withdraw your winnings</h2>
+                      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <dialog id="flashDialog">
+            <div class="flash-dialog-inner">
+                <button class="flash-close-btn" onclick="document.getElementById('flashDialog').close()">&#x2715;</button>
+                {% for category, message in messages %}
+                <div class="flash-{{ category }}">
+                    <strong>{{ category|title }}</strong>
+                    <p>{{ message }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </dialog>
+        <script>
+            const flashDialog = document.getElementById('flashDialog');
+            flashDialog.showModal();
+            setTimeout(() => flashDialog.close(), 5000);
+            flashDialog.addEventListener('click', e => {
+                if (e.target === flashDialog) flashDialog.close();
+            });
+        </script>
+        {% endif %}
+        {% endwith %}
+                </div>
+                <div class="card-body">
+                    <p>Dear Zwipper you are allowed too withdraw a minimum of R200</p>
+                    <p>Kindly give an allowance of atleast 48 hours for the cash send sms to reflect on your cell number</p>
+                    <p>In the event 48 hours pass without reciving the cash send voucher, kindly contact our admin</p>
+                    <p>You sure made a great choice by joining the land of winners</p>
+                </div>
+                <div class="card-footer">
+                    <form action="" method="post">
+                        {{form.hidden_tag()}}
+                        <label for="amount">Withdrawal Amount (R)</label>
+                        {{form.amount(id="amount",placeholder="0.00",class="amount-input")}}
+                        {% if form.amount.errors%}
+                            {% for error in form.amount.errors %}
+                                <p class="field-erro">{{ error }}</p>
+                            {% endfor %}
+                        {%endif %}
+
+                        {{form.submit(class="btn-withdraw")}}
+                    </form>
+                </div>
+            </div>
+        </div>
+                  <nav class="bottom-nav">
+            <a href="/" class="nav-item">
+                <svg class="nav-icon"><use href="#icon-home"></use></svg>
+                <span>Home</span>
+            </a>
+            <a href="/profile" class="nav-item">
+                <svg class="nav-icon"><use href="#icon-profile"></use></svg>
+                <span>Profile</span>
+            </a>
+            <a href="/deposit" class="nav-item">
+                <svg class="nav-icon"><use href="#icon-deposit"></use></svg>
+                <span>Deposit</span>
+            </a>
+            <a href="/withdraw" class="nav-item">
+                <svg class="nav-icon"><use href="#icon-withdraw"></use></svg>
+                <span>Withdraw</span>
+            </a>
+            <a href="/logout" class="nav-item">
+                <svg class="nav-icon"><use href="#icon-logout"></use></svg>
+                <span>Logout</span>
+            </a>
+        </nav>
+        
+
+{% endblock %}

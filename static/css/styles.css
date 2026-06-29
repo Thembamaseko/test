@@ -1,0 +1,540 @@
+body{
+    padding:2vmin;
+    background-color: rgb(19, 15, 80);
+    color: whitesmoke;
+}
+
+.container{
+    width:420px
+}
+.card{
+    width:290px
+}
+.header{
+    align-content: space-around;
+    display: flex;
+    margin-bottom: 1vmin;
+    padding-left: 2vmin;
+}
+.ballance{
+    margin-left: 45vmin;
+}
+
+.game{
+    margin-top: 0px;
+}
+
+.recent{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    padding-left: 2vmin;
+    border-top-style: solid;
+    border-top-color: white;
+    padding: 0;
+
+     border-bottom-style: solid;
+    border-bottom-color: white;
+    margin-bottom: 2vmin;
+}
+
+.recent-h{
+    padding: 1vmin;
+    margin-left: 2.5vmin;
+    font-size: 7vmin;
+    border-radius: 100px;
+    border-color: white;
+    border-width: 2px;
+    border-style: solid;
+}
+
+.result{
+    justify-content: center;
+    text-align: center;
+    padding-top: 5vmin;
+    padding-bottom: 5vmin;
+    
+    background-image: url(../images/bg.png);
+    background-size: cover;
+    border-radius: 10px;
+
+}
+
+#result{
+    width: 35vmin;
+    border-radius: 55px;
+}
+
+.timer{
+    margin-top:4vmin;
+    width:100%;
+    height: 5vmin;
+    background-color:green;
+
+    
+}
+
+.bets{
+    display: flex;
+}
+
+.bets-left{
+    padding-top: 5vmin;
+    justify-content: space-between;
+    width: 20vmin;
+}
+
+#heads{
+    background-image: url(../images/heads.png);
+    background-size: cover;
+    width: 25vmin;
+    height: 25vmin;
+    border-radius: 50px;
+}
+#tails{
+    background-image: url(../images/tails.png);
+    background-size: cover;
+    width: 25vmin;
+    height: 25vmin;
+    border-radius: 50px;
+}
+
+.amount{
+    margin-top: 1vmin;
+    text-align: center;
+    align-content: center;
+}
+
+.button{
+    margin-bottom: 2vmin;
+}
+
+input{
+    width: 30vmin;
+}
+
+.bets-right{
+    padding-top: 5vmin;
+    padding-left: 5vmin;
+
+}
+#chats-img{
+    width: 15vmin;
+    border-radius: 50px;
+    margin-bottom: 0px;
+    background-color: white;
+}
+#card-header{
+    background-color: white;
+}
+#submit{
+    width: 33vmin;
+    height: 33vmin;
+    background-color: rgb(9, 247, 9);
+    border-radius: 10px;
+     text-shadow: 0 0 10px #f6f5f8,
+                 0 0 20PX #faf9fc;
+}
+.nav{
+    justify-content: space-between;
+    display: flex;
+    border-top-width: 1px;
+    border-top-color: white;
+    border-top-style: solid;
+    margin-top: 4vmin;
+}
+
+p{
+    font-family:cursive;
+    text-shadow: 0 0 10px #7F5AF0,
+                 0 0 20PX #7F5AF0;
+    font-size: 5vmin;
+}
+
+
+
+ @media(min-width:375px){
+
+    .container{
+    width:90vw;
+    border-width: 2px;
+    border-style: solid;
+    border-color: white;
+}
+
+.header{
+    width: 90vw;
+}
+
+.recent-h{
+    font-size: 5vmin;
+}
+
+.nav{
+    width: 90vw;
+}
+
+.game{
+        width: 90vw;
+
+}
+
+#result{
+    width: 25vmin;
+}
+
+button{
+    width: 10vmin;
+}
+
+#submit{
+    margin-top: 1vmin;
+    width: 30vmin;
+    height: 32vmin;
+}
+         
+    
+
+
+ } 
+
+ @media(min-width:425px){
+
+    .container{
+    width:90vw;
+    border-width: 2px;
+    border-style: solid;
+    border-color: white;
+}
+
+.header{
+    width: 90vw;
+}
+
+.recent-h{
+    font-size: 3vmin;
+}
+
+.nav{
+    width: 90vw;
+}
+
+.game{
+        width: 90vw;
+
+}
+#heads{
+    height: 20vmin;
+    width: 20vmin;
+}
+#tails{
+    height: 20vmin;
+    width: 20vmin;
+}
+
+#result{
+    width: 25vmin;
+}
+
+p{
+    font-size: 4vmin;
+}
+
+button{
+    width: 5vmin;
+}
+
+#submit{
+    margin-top: 1vmin;
+    width: 40vmin;
+    height: 26vmin;
+}
+ }
+
+
+
+ @media(min-width:768px){
+
+.container{
+    width:425px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: white;
+}
+
+.header{
+    width:425px;
+}
+
+p{
+    font-size: 1vmin;
+}
+
+.recent-h{
+    font-size: 3vmin;
+}
+
+.nav{
+    margin-top: 1vmin;
+    width:425px;
+}
+.timer{
+    margin-top: 1vmin;
+}
+.game{
+    width:425px;
+
+}
+#heads{
+    height: 15vmin;
+    width: 15vmin;
+
+}
+
+.ballance{
+    margin-left: 41vmin;
+}
+#tails{
+    height: 15vmin;
+    width: 15vmin;
+    margin-left: 5vmin;
+}
+
+input{
+    width: 20vmin;
+}
+
+.result{
+    padding-top: 1vmin;
+    padding-bottom: 2vmin;
+    margin-bottom: 1vmin;
+}
+
+#result{
+    width: 20vmin;
+}
+
+p{
+    font-size: 4vmin;
+}
+
+button{
+    width: 5vmin;
+}
+
+#submit{
+    margin-top: 1vmin;
+    width: 25vmin;
+    height: 16vmin;
+    margin-left: 10vmin ;
+}
+
+body{
+    padding-left: 30vmin;
+    padding-top: 0px;
+}
+ }
+
+
+ @media(min-width:1024px){
+
+.container{
+    width:425px;
+}
+
+.header{
+    width:425px;
+}
+
+p{
+    font-size: 10px;
+}
+
+.recent-h{
+    font-size: 3vmin;
+}
+
+.nav{
+    margin-top: 1vmin;
+    width:425px;
+}
+.timer{
+    margin-top: 1vmin;
+}
+.game{
+    width:425px;
+
+}
+
+.bets-left{
+
+    padding-top:1vmin;
+}
+
+.bets-right{
+    padding-top: 1vmin;
+}
+#heads{
+    height: 12vmin;
+    width: 12vmin;
+
+}
+
+.ballance{
+    margin-left: 31vmin;
+}
+#tails{
+    height: 12vmin;
+    width: 12vmin;
+    margin-left: 5vmin;
+}
+
+input{
+    width: 15vmin;
+}
+
+.result{
+    padding-top: 1vmin;
+    padding-bottom: 1vmin;
+    margin-bottom: 1vmin;
+}
+
+#result{
+    width: 20vmin;
+    border-color: black;
+    border-style: solid;
+    border-width: 1vmin;
+    border-radius: 50%;
+}
+
+p{
+    font-size: 3vmin;
+}
+
+button{
+    width: 5vmin;
+}
+
+#submit{
+    width: 15vmin;
+    height: 16vmin;
+    margin-left: 5vmin ;
+}
+
+body{
+    padding-left: 40vmin;
+    padding-top: 0px;
+}
+ }
+
+ @media(min-width:1440px){
+
+.container{
+    width:700px;
+   
+}
+
+.header{
+    width:700px;
+}
+
+
+.recent-h{
+    font-size: 3vmin;
+}
+
+.nav{
+    margin-top: 1vmin;
+    width:700px;
+}
+.timer{
+    margin-top: 1vmin;
+}
+.game{
+    width:700px;
+
+}
+#heads{
+    height: 13vmin;
+    width: 13vmin;
+    border-radius: 50%;
+
+}
+
+.ballance{
+    margin-left: 31vmin;
+}
+#tails{
+    height: 13vmin;
+    width: 13vmin;
+    margin-left: 5vmin;
+    border-radius: 50%;
+}
+
+#decrease{
+    font-size: 4.5vmin;
+    margin-top: 10px;
+}
+
+#increase{
+     font-size: 4.5vmin;
+    margin-top: 10px;
+    height: 6vmin;
+}
+
+input{
+    width: 20vmin;
+    height: 6vmin;
+    font-size: 3vmin;
+    margin:1vmin;
+}
+
+.result{
+    padding-top: 1vmin;
+    padding-bottom: 2vmin;
+    margin-bottom: 1vmin;
+}
+
+#result{
+    width: 20vmin;
+}
+
+p{
+    font-size: 4vmin;
+    color: #7F5AF0;
+}
+
+button{
+    width: 5vmin;
+}
+
+#submit{
+    margin-top: 1vmin;
+    width: 25vmin;
+    height: 16vmin;
+    margin-left: 5.5vmin ;
+    font-size: 6vmin;
+}
+
+body{
+    padding-left: 60vmin;
+    padding-top: 0px;
+}
+ }
+
+@keyframes spin-tails{
+    0%{
+        transform: rotateY(0);
+    }
+    100%{
+        transform: rotateY(1980deg);
+    }
+}
+@keyframes spin-heads{
+    0%{
+        transform: rotateY(0);
+    }
+    100%{
+        transform: rotateY(2160deg);
+    }
+}

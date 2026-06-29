@@ -1,0 +1,109 @@
+{% extends 'base.html'%}
+
+{% block content %}
+    <div class="card">
+
+        <header class="header">
+            <div class="logo">
+                <p id="logo">zwipi<span>Online</span></p> 
+            </div>
+
+            <div class="user">
+                <h3>{{current_user.username}}</h3>
+               <p class="ballance" id="scount">R {{current_user.coins}}</p>
+
+            </div>
+        </header>
+        
+
+        <div class="game">
+        <div class="recent">
+
+            <ul id="recent-results" style ="list-style-type: none">
+                <li>
+                     {% for spin in recent_spins %}
+
+                {% if spin.result == "Heads"%}
+                        <img class="recent-img" src="../static/images/heads.png">
+                {% elif spin.result == "Tails" %}
+                        <img  class="recent-img" src="../static/images/tails.png">
+                {% endif %}
+
+            
+
+        {% endfor %}
+                </li>
+            </ul>
+
+            
+       
+        </div>
+        <div class="result">
+                <div class="coin" id="coin">
+            <div class="heads">
+                <img src="../static/images/heads.png">
+            </div>
+            <div class="tails">
+                <img src="../static/images/tails.png">
+            </div>
+        </div>
+        </div>
+        <div class="timer" id="timer"></div>
+        
+
+        <form method="post">
+
+            <div class="bets-card">
+                <div class="card-header">
+                 <label for="current-spin-id" style="color: white;">Current Spin ID: </label>
+                <input type="text" id="current-spin-id" name="current-spin-id" readonly style="width: 80px; text-align: center; background-color: #222; color: #fff; border: 1px solid #444; border-radius: 4px;">
+
+                </div>
+                <div class="card-body">
+                    <div class="bets-left">
+                        <div class="top">
+                           <img src="../static/images/heads.png" alt=""  id="heads" class = "choices">
+                           <img src="../static/images/tails.png" alt=""  id="tails" class="choices">
+
+                        </div>
+
+                        <div class="bottom">
+                            <img src="../static/images/left.png" alt="dec" id="decrease" class="amount-btn">
+                            <input type="number" name="bet-amount" id="betamount" value = "1">
+                            <img src="../static/images/right.png" alt="inc"  id="increase" class="amount-btn">
+
+
+                        </div>
+                    </div>
+                    <div class="bets-right">
+                        <input type="text" name="bet-choice" id="choice" readonly hidden>
+                        {{ form.submit(class="bet-btn") }}
+
+                    </div>
+                </div>
+            </div>
+        
+                
+        </form>
+
+        <div class="errors">
+            
+        </div>
+  
+       
+
+        <div class="nav">
+
+                <p>profile</p>
+                <p>deposit</p>
+                <p>withdraw</p>
+                <a href="/logout"> <p>logout</p></a>
+               
+        </div>
+
+        </div>
+        <!-- <script src="../static/js/game.js"></script> -->
+        <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
+        <script src="../static/js/game2.js"></script>
+        <script src="../static/js/socket.js"></script>
+{% endblock %}

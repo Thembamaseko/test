@@ -1,0 +1,729 @@
+/* ===========================
+   Zwipi — Twitter Mobile Theme
+   =========================== */
+
+:root {
+    --bg: #000000;
+    --bg-secondary: #16181c;
+    --bg-card: #16181c;
+    --border: #2f3336;
+    --text: #e7e9ea;
+    --text-secondary: #71767b;
+    --accent: #1d9bf0;
+    --accent-hover: #1a8cd8;
+    --green: #00ba7c;
+    --red: #f4212e;
+    --gold: #ffd700;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.app {
+    max-width: 600px;
+    margin: 0 auto;
+    min-height: 100vh;
+    padding-bottom: 70px;
+    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+}
+
+/* ===== Header ===== */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+}
+
+#logo {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--text);
+}
+
+#logo span {
+    color: var(--accent);
+    font-weight: 800;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.username {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--text);
+}
+
+.balance-pill {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--green);
+}
+
+/* ===== Game container ===== */
+.game {
+    padding: 0;
+}
+
+.section-label {
+    font-weight: 800;
+    font-size: 15px;
+    padding-top: 1px ;
+    text-align: center;
+    color: var(--text);
+}
+
+/* ===== Recent results ===== */
+.recent-card {
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+}
+
+.recent-list {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    list-style: none;
+    padding: 0 16px 12px;
+    text-align: center;
+}
+
+.recent-item {
+    flex-shrink: 0;
+}
+
+.recent-img {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    background: var(--gold);
+    padding: 2px;
+    
+}
+
+/* ===== Coin / result area ===== */
+.result-card {
+    padding: 3vmin;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+}
+
+.coin {
+    position: relative;
+
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px var(--bg-secondary), 0 8px 24px rgba(0, 0, 0, 0.5);
+    perspective: 100px;
+}
+
+.coin .heads,
+.coin .tails {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backface-visibility: hidden;
+}
+
+.coin .heads img,
+.coin .tails img {
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
+    border-radius: 50px;
+}
+
+.coin .tails {
+    transform: rotateY(180deg);
+}
+
+.coin.spinning {
+    animation: coinFlip 1s linear infinite;
+}
+
+@keyframes coinFlip {
+    from { transform: rotateY(0deg); }
+    to   { transform: rotateY(360deg); }
+}
+
+.timer {
+    margin-top: 6px;
+    margin-left:2vmin;
+    margin-right:2vmin;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-secondary);
+
+    transition: width 1s linear;
+    border-radius: 20px;
+    border: 2px, solid rgb(204, 248, 8);
+    padding: 5px;
+
+}
+
+/* ===== Bet form ===== */
+.bets-card {
+    border-bottom: 1px solid var(--border);
+    padding: 6px;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.card-header label {
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+#current-spin-id {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    padding: 6px 10px;
+    width: 90px;
+    text-align: center;
+    font-size: 13px;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* Heads/Tails choice buttons */
+.choice-row {
+    display: flex;
+    gap: 10px;
+}
+
+.choice-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text);
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.choice-btn img.choice-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50px;
+}
+
+.choice-btn:hover {
+    background: rgba(231, 233, 234, 0.1);
+}
+
+.choice-btn.active {
+    background: rgba(29, 155, 240, 0.1);
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+/* Amount stepper */
+.amount-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+.amount-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s;
+    color: var(--text);
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.amount-btn:hover {
+    background: rgba(231, 233, 234, 0.1);
+}
+
+#betamount {
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: var(--text);
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    padding: 10px;
+    width: 100px;
+    outline: none;
+}
+
+#betamount:focus {
+    border-color: var(--accent);
+}
+
+/* Primary bet button, Twitter "Post" style */
+.bet-btn {
+    width: 100%;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    padding: 14px;
+    font-weight: 800;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.bet-btn:hover {
+    background: var(--accent-hover);
+}
+
+.bet-btn:disabled {
+    background: #1d4f6f;
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Errors */
+.errors {
+    padding: 0 16px;
+    color: var(--red);
+    font-size: 14px;
+}
+
+/* ===== Bottom nav ===== */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid var(--border);
+    padding: 10px 0;
+    z-index: 100;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 14px;
+    border-radius: 8px;
+    transition: color 0.2s, background 0.2s;
+}
+
+.nav-item:hover,
+.nav-item.active {
+    color: var(--accent);
+    background: rgba(231, 233, 234, 0.1);
+}
+
+/* SVG sprite icons use currentColor, so they inherit nav-item color */
+.nav-icon {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: currentColor;
+}
+
+/* ===== Small screens ===== */
+@media (max-width: 380px) {
+    .coin {
+        width: 110px;
+        height: 110px;
+    }
+
+    .username {
+        display: none;
+    }
+}
+
+.auth{
+    padding: 16px;
+}
+
+.auth-title{
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 4px;
+}
+
+a{
+    text-decoration: none;
+    color: var(--accent);
+}
+
+.auth-subtitle{
+    font-size:14px;
+    color:var(--text-secondary);
+    margin-bottom:24px;
+}
+
+.auth-form{
+    display: flex;
+    flex-direction: column;
+    gap:6px
+}
+
+.field-group label{
+    display: flex;
+    align-items: center;
+    gap:8px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-secondary);
+}
+
+.field-icon{
+    width:18px;
+    height:18px;
+    fill:none;
+    stroke: currentColor;
+    flex-shrink: 0;
+}
+
+.field-input{
+    width:100%;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px 14px;
+    color: var(--text);
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.field-input::placeholder{
+    color: var(--text-secondary)
+}
+
+.field-input:focus{
+    color: var(--accent)
+}
+
+.field-error{
+    font-size: 12px;
+    color:var(--red);
+    font-weight:600;
+}
+
+.radio-row{
+    display:flex;
+    gap: 10px;
+}
+.radio-pill{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    font-size: 14px;
+    font-weight:700;
+    color:var(--text);
+    cursor: pointer;
+    transition: background 0.2s,border-color 0.2s, color 0.2s;
+}
+
+.radio-pill input[type="radio"]{
+    accent-color:var(--accent);
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.radio-pill:has(input:checked){
+    background: rgba(29, 155, 240, 0.1);
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.radio-pill:hover{
+    background: rgba(231, 233, 234, 0.1);
+}
+
+.auth-btn{
+    width: 100%;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    padding: 14px;
+    font-weight: 800;
+    font-size: 16px;
+    cursor:pointer;
+    transition: background 0.2s;
+    margin-top: 8px;
+}
+
+.auth-btn:hover{
+    background: var(--accent-hover);
+}
+.auth-footer{
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.auth-footer a{
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.auth-footer a:hover{
+    text-decoration: underline;
+}
+
+.flash-container{
+    position: fixed;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 200;
+    width: 90%;
+    max-width: 560px;
+}
+
+
+.flash{
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    border: 1px solid var(--border);
+    color: var(--text);
+}
+
+.flas-success{
+    border-color:var(--green);
+    color:var(--green);
+    background-color: #1d4f6f;
+
+}
+
+.flash-danger, .flash-error{
+    border-color: var(--red);
+    color:var(--red);
+        background-color: #1d4f6f;
+
+}
+
+.flash-info{
+    border-color:var(--accent);
+    color: var(--accent);
+}
+
+/* for admin */
+.main{
+    padding: 2vmin;
+    background-color: #042a42;
+    margin: 3vmin;
+}
+
+.main-top{
+    display: flex;
+    justify-content: space-between;
+    padding:2vmin
+}
+
+#u_name{
+    color:#e975c6;
+    font-weight: 900;
+    font-size: 5vmin;
+}
+
+.main-body{
+    margin-top: 1vmin;
+    background-color: #18384e;
+}
+
+
+.stats{
+    margin: 3vmin;
+    padding: 2vmin;
+    background-color: #042a42;
+    display: flex;
+    align-content: space-between;
+}
+
+.stat-card{
+    margin-left: 4vmin;
+}
+
+.container{
+    padding:2vmin;
+    margin-bottom: 20vmin;
+    padding-bottom: 5vmin;
+}
+.card{
+    background-color: #056847;
+    border: 1px solid white;
+    margin: 2vmin;
+    text-align: center;
+    border-radius: 10px;
+    padding: 2vmin;
+}
+
+.card-header{
+    text-align: center;
+}
+
+.card-footer{
+    background-color: #034731;
+    display: flex;
+}
+
+.btn-withdraw{
+    background-color: #1a8cd8;
+    padding: 1vmin;
+    color: white;
+    width: 80vmin;
+    border-radius: 10px;
+    margin-top: 4vmin;
+    height: 10vmin;
+
+}
+
+.error{
+    color: #f4212e;
+    font-size: 14px;
+    font-weight: 600;
+    background-color: #1d4f6f;
+    border: 1px solid #f4212e;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 1vmin;
+}
+
+.amount-input{
+        background: transparent;
+        height: 10vmin;
+        color: #1a8cd8;
+        border-radius: 10px;
+        border-style: solid;
+        border-width: 1px;
+        border-color: #1a8cd8;
+        text-align: center;
+        margin-top: 1vmin;
+
+}
+/* Flash Dialog */
+#flashDialog {
+    border: none;
+    border-radius: 12px;
+    padding: 0;
+    min-width: 280px;
+    max-width: 400px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+#flashDialog::backdrop {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.flash-dialog-inner {
+    position: relative;
+    padding: 24px 20px 20px;
+}
+
+.flash-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    color: #666;
+    line-height: 1;
+}
+
+.flash-close-btn:hover {
+    color: #000;
+}
+
+/* Category colours */
+.flash-success { color: #1a7a3c; }
+.flash-error   { color: #b00020; }
+.flash-warning { color: #8a5d00; }
+.flash-info    { color: #005f99; }
+
+.flash-dialog-inner strong {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 4px;
+}
+
+.flash-dialog-inner p {
+    margin: 0;
+    font-size: 0.9rem;
+}

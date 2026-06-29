@@ -1,0 +1,58 @@
+{% extends 'basement.html'%}
+
+{% block content%}
+
+    {% include 'zwipi-icons.svg' %}
+
+    <header class="header">
+        <div class="logo">
+            <p id="logo">zwipi<span>Online</span></p>
+        </div>
+        <div class="user">
+            <span class="username">{{current_user.username}}</span>
+            <p class="balance-pill" id="scount">
+                R {{current_user.coins}}
+            </p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-head">
+                <h2>Deposit Funds</h2>
+            </div>
+            <div class="card-body">
+                <p>Dear Zwipper</p>
+                <h2>This Page is Under Construction</h2>
+                <p>The deposit functionality is currently being developed and will be available once testing is done.</p>
+            </div>
+            <div class="card-footer">
+                <h3>We appreciate your business!</h3>
+            </div>
+        </div>
+    </div>
+
+    <nav class="bottom-nav">
+        <a href="/" class="nav-item">
+            <svg class="nav-icon"><use href="#icon-home"></use></svg>
+            <span>Home</span>
+        </a>
+        <a href="/profile" class="nav-item">
+            <svg class="nav-icon"><use href="#icon-profile"></use></svg>
+            <span>Profile</span>
+        </a>
+        <a href="/deposit" class="nav-item">
+            <svg class="nav-icon"><use href="#icon-deposit"></use></svg>
+            <span>Deposit</span>
+        </a>
+        <a href="/withdraw" class="nav-item">
+            <svg class="nav-icon"><use href="#icon-withdraw"></use></svg>
+            <span>Withdraw</span>
+        </a>
+        <a href="/logout" class="nav-item">
+            <svg class="nav-icon"><use href="#icon-logout"></use></svg>
+            <span>Logout</span>
+        </a>
+    </nav>
+
+{% endblock %}

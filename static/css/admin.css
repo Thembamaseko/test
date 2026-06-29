@@ -1,0 +1,64 @@
+.admin-card{
+    display: block;
+}
+
+.container{
+    border: 1px solid white;
+    padding: 2vmin;
+    border-radius: 10px;
+    height: fix;
+    width: 70%;
+}
+th{
+    padding: 1vmin;
+    border: 1px solid rgb(19,15,80);
+    background-color: white;
+    color: rgb(19, 15, 80);
+}
+
+td{
+    padding: 1vmin;
+    border: 1px solid white;
+}
+
+.nav{
+    width: 110vmin;
+    padding-top: 2vmin;
+}
+
+#admin-search{
+    width: 85vmin;
+    border-radius: 10px;
+}
+
+.form{
+    border-bottom: 2px solid white;
+    margin-bottom: 2vmin;
+}
+
+#admin-submit{
+    margin-top: 1vmin;
+    width: 20vmin;
+    background-color: lime;
+    color: black;
+}
+
+.container{
+    padding-top: 0%;
+    margin-top: 5vmin;
+}
+.card-head{
+    padding-top: 2vmin;
+}
+
+.card-body{
+    border: 2px solid white;
+    height:50vh
+}
+
+#banklogo{
+    background: rgb(12, 168, 129);
+    padding: 1vmin;
+    width: 100%;
+    text-align: center;
+}

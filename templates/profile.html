@@ -1,0 +1,85 @@
+
+
+{% extends 'basement.html'%}
+
+
+{% block content%}
+
+        {% include 'zwipi-icons.svg' %}
+         <header class="header">
+            <div class="logo">
+                <p id="logo">zwipi<span>Online</span></p>
+            </div>
+
+            <div class="user">
+                <span class="username">{{current_user.username}}</span>
+                <p class="balance-pill" id="scount">
+                    R {{current_user.coins}}
+                </p>
+            </div>
+        </header>
+        <div class="container">
+                {% for bet in bets %}
+            <div class="bet">
+
+                <div class="card">
+                    <div class="card-header">
+                    <p>Bet ID: {{ bet.id }}</p>
+                    
+
+                    </div>
+                    <div class="card-body">
+                            <p>Amount: {{ bet.amount }}</p>
+                            <p>Choice: {{ bet.choice }}</p><br>
+
+                            <p>spin Id : {{bet.spin_id}}</p>
+                        {% set spin = spins.get(bet.spin_id) %}
+                    {% if spin %}
+                        <p>Spin Result:  {{spin.result}}</p>
+                    {% else %}
+                        <p>No Spin found</p>
+                    {% endif %}
+                        
+                        
+                    </div>
+                    <div class="card-footer">
+                                {% if spin.result == bet.choice %}
+                                    <p>You won</p>
+                                {% else %}
+                                    <p>You Lost</p>
+                                {% endif %}
+
+                    </div>
+                </div>
+
+            
+                
+                
+            </div>
+        {% endfor %}
+        </div>
+                  <nav class="bottom-nav">
+            <a href="/" class="nav-item">
+                <svg class="nav-icon"><use href="#icon-home"></use></svg>
+                <span>Home</span>
+            </a>
+            <a href="/profile" class="nav-item">
+                <svg class="nav-icon"><use href="#icon-profile"></use></svg>
+                <span>Profile</span>
+            </a>
+            <a href="/deposit" class="nav-item">
+                <svg class="nav-icon"><use href="#icon-deposit"></use></svg>
+                <span>Deposit</span>
+            </a>
+            <a href="/withdraw" class="nav-item">
+                <svg class="nav-icon"><use href="#icon-withdraw"></use></svg>
+                <span>Withdraw</span>
+            </a>
+            <a href="/logout" class="nav-item">
+                <svg class="nav-icon"><use href="#icon-logout"></use></svg>
+                <span>Logout</span>
+            </a>
+        </nav>
+        
+
+{% endblock %}

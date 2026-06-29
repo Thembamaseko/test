@@ -1,0 +1,19 @@
+{% extends 'base.html'%}
+
+{% block 'content'%}
+
+<h1>Zee Bank</h1>
+{{user.username}}
+
+{{form.hidden_tag() }}
+
+<p>
+    {{form.deposit_amount(size = 5)}}
+</p>
+<p>
+    {{form.submit}}
+</p>
+
+
+
+{% endblock %}
