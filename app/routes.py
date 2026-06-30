@@ -154,6 +154,7 @@ def init_routes(app):
 
     @app.route('/init-db')
     def init_db():
+        db.drop_all()
         db.create_all()
         return redirect(url_for('register'))
     @app.route('/',methods =['GET','POST'])
