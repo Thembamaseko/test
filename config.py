@@ -19,7 +19,7 @@ class Config:
     DEBUG = os.environ.get('FLASK_DEBUG','False').lower()in ('true','1','t')
     CORS_ORIGINS = os.environ.get('CORS_ORIGINS','*')
 
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL','sqlite:///zwipiOnline.db') or \
+    SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_URL','sqlite:///zwipiOnline.db') or \
         'sqlite:///' + str(Path(__file__).parent / 'app.db')
     
     db_url = os.environ.get('DATABASE_URL','sqlite:///zwipiOnline.db')
