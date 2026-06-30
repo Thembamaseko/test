@@ -260,6 +260,7 @@ def init_routes(app):
                 return redirect(url_for('login'))
             except:
                 db.session.rollback()
+                print( 'an error happened')
         return render_template('register.html',form = form)
 
     @app.route('/terms')
