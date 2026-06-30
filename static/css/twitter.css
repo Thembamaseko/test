@@ -410,7 +410,9 @@ body {
     font-weight: 800;
     margin-bottom: 4px;
 }
-
+.container{
+   width:375px;
+}
 a{
     text-decoration: none;
     color: var(--accent);
@@ -623,6 +625,7 @@ a{
     padding:2vmin;
     margin-bottom: 20vmin;
     padding-bottom: 5vmin;
+    width:450px;
 }
 .card{
     background-color: #056847;
