@@ -1,4 +1,4 @@
-    const socket = io();
+    const socket = io("https://game-jjad.onrender.com");
 
     const timer = document.getElementById('timer');
     const bets = document.getElementById('submit');
