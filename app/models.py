@@ -25,7 +25,7 @@ class User(db.Model, UserMixin):
     id_number = db.Column(db.String(13), nullable=False)
     coins = db.Column(db.Integer, default=0)
     role = db.Column(db.String(20), default='user')
-    password_hash = db.Column(db.String(120), nullable=False)
+    password_hash = db.Column(db.String(500), nullable=False)
 
 
     bets = db.relationship('Bet',backref = 'user',lazy = True)
